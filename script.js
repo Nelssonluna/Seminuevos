@@ -1,0 +1,1 @@
+document.getElementById('demo')?.addEventListener('click',()=>{document.getElementById('resultado').textContent='Demostración completada. En el sistema final, tu solicitud quedará pendiente de confirmación. No se envió ninguna cita.';});

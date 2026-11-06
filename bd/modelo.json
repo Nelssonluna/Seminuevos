@@ -1,0 +1,318 @@
+{
+  "roles": {
+    "cols": [
+      [
+        "id_rol",
+        "TINYINT UNSIGNED",
+        "NOT NULL",
+        "PK "
+      ],
+      [
+        "nombre",
+        "VARCHAR(30)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "descripcion",
+        "VARCHAR(150)",
+        "NULL",
+        ""
+      ]
+    ],
+    "fk": []
+  },
+  "usuarios": {
+    "cols": [
+      [
+        "id_usuario",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "PK "
+      ],
+      [
+        "id_rol",
+        "TINYINT UNSIGNED",
+        "NOT NULL",
+        "FK"
+      ],
+      [
+        "nombre_completo",
+        "VARCHAR(100)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "correo",
+        "VARCHAR(120)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "telefono",
+        "VARCHAR(15)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "contrasena_hash",
+        "VARCHAR(255)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "activo",
+        "BOOLEAN",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha_registro",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ]
+    ],
+    "fk": [
+      [
+        "id_rol",
+        "roles",
+        "id_rol"
+      ]
+    ]
+  },
+  "marcas": {
+    "cols": [
+      [
+        "id_marca",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        "PK "
+      ],
+      [
+        "nombre",
+        "VARCHAR(50)",
+        "NOT NULL",
+        ""
+      ]
+    ],
+    "fk": []
+  },
+  "automoviles": {
+    "cols": [
+      [
+        "id_automovil",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "PK "
+      ],
+      [
+        "id_marca",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        "FK"
+      ],
+      [
+        "modelo",
+        "VARCHAR(60)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "anio",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "precio",
+        "DECIMAL(10,2)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "kilometraje",
+        "INT UNSIGNED",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "transmision",
+        "ENUM('Automática','Manual','CVT')",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "combustible",
+        "ENUM('Gasolina','Diésel','Híbrido','Eléctrico')",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "color",
+        "VARCHAR(30)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "imagen",
+        "VARCHAR(255)",
+        "NULL",
+        ""
+      ],
+      [
+        "estatus",
+        "ENUM('Disponible','Vendido')",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "destacado",
+        "BOOLEAN",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha_alta",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha_actualizacion",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ]
+    ],
+    "fk": [
+      [
+        "id_marca",
+        "marcas",
+        "id_marca"
+      ]
+    ]
+  },
+  "favoritos": {
+    "cols": [
+      [
+        "id_usuario",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "PK FK"
+      ],
+      [
+        "id_automovil",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "PK FK"
+      ],
+      [
+        "fecha_agregado",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ]
+    ],
+    "fk": [
+      [
+        "id_usuario",
+        "usuarios",
+        "id_usuario"
+      ],
+      [
+        "id_automovil",
+        "automoviles",
+        "id_automovil"
+      ]
+    ]
+  },
+  "citas": {
+    "cols": [
+      [
+        "id_cita",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "PK "
+      ],
+      [
+        "id_usuario",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "FK"
+      ],
+      [
+        "id_automovil",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "FK"
+      ],
+      [
+        "contacto_nombre",
+        "VARCHAR(100)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "contacto_correo",
+        "VARCHAR(120)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "contacto_telefono",
+        "VARCHAR(15)",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha",
+        "DATE",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "hora",
+        "TIME",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "comentario",
+        "VARCHAR(255)",
+        "NULL",
+        ""
+      ],
+      [
+        "estatus",
+        "ENUM('Pendiente','Confirmada','Reprogramada','Cancelada')",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha_solicitud",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ],
+      [
+        "fecha_actualizacion",
+        "DATETIME",
+        "NOT NULL",
+        ""
+      ]
+    ],
+    "fk": [
+      [
+        "id_usuario",
+        "usuarios",
+        "id_usuario"
+      ],
+      [
+        "id_automovil",
+        "automoviles",
+        "id_automovil"
+      ]
+    ]
+  }
+}
